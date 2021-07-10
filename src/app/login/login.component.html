@@ -1,0 +1,8 @@
+<ul>
+  <li *ngFor="let list of Totalmenus">
+    <div>{{ list.name }}</div>
+    <ul>
+      <li *ngFor="let item of list.goods">{{ item }}</li>
+    </ul>
+  </li>
+</ul>

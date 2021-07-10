@@ -1,0 +1,13 @@
+<div>
+  <ng-container *ngFor="let item of list">
+    <div style="display: flex">
+      <input [disabled]="editable" [value]="item.name" />
+      <input [disabled]="editable" [value]="item.name" />
+      <div>
+        <button>
+          {{ editable ? "변경" : "적용" }}
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</div>

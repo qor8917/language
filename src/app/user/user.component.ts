@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { LanguageService } from '../language.service';
 import { language } from '../../assets/models/language';
@@ -9,15 +10,21 @@ import { language } from '../../assets/models/language';
 export class UserComponent implements OnInit {
   data: any[] = [];
   formatData: any[] = [];
-  constructor(private language: LanguageService) {}
+  obj = {
+    설비효율:'',
+    바바효율:'',
+    사사효율:'',
+    왕왕효율:''
+  }
+  constructor(private language: LanguageService,private http:HttpClient) {}
 
   ngOnInit(): void {
-    this.eachLang();
+   
   }
-  eachLang() {
-    language.forEach((lang, i) => {
-      let jsonURL = `http://localhost:4200/assets/i18n/${lang}.json`;
-      this.language.getData(jsonURL).subscribe((data) => (this.data = data));
-    });
+  focusOut(e:any){
+    const {name,value} = e.target;
+    this.obj= {...this.obj,[name]:value}
+    console.log(this.obj);
+    this.http.post("http://localhost:8080/url",{...this.obj})
   }
 }

@@ -7,12 +7,14 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
+import { LoginComponent } from './login/login.component';
+import { TableComponent } from './table/table.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 @NgModule({
-  declarations: [AppComponent, UserComponent],
+  declarations: [AppComponent, UserComponent, LoginComponent, TableComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -25,6 +27,7 @@ export function createTranslateLoader(http: HttpClient) {
       },
       defaultLanguage: 'ko',
     }),
+    
   ],
   providers: [],
   bootstrap: [AppComponent],
